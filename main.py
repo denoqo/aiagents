@@ -7,6 +7,7 @@ from note_engine import note_engine
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
+from pdf import canada_engine
 
 load_dotenv()
 
@@ -27,8 +28,14 @@ tool_engines = [
     QueryEngineTool(
         population_query_engine,
         metadata= ToolMetadata(
-            name="information",  
-            description="no information")
+            name="population_data",  
+            description="This gives information at the world population")
+    ),
+    QueryEngineTool(
+        canada_engine,
+        metadata= ToolMetadata(
+            name="canada_data",  
+            description="this give detailed informatoin about canada the country")
     )
 ]
 
